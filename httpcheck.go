@@ -25,10 +25,7 @@ func main() {
 		Delay:       30 * time.Second,
 		Concurrency: 10,
 	}
-	if err := autoflags.Define(&config); err != nil {
-		log.Fatal(err)
-	}
-	flag.Parse()
+	autoflags.Parse(&config)
 	if len(config.List) == 0 || config.Delay <= 0 || config.Concurrency <= 0 {
 		flag.Usage()
 		os.Exit(1)
